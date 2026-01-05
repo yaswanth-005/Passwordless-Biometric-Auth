@@ -1,0 +1,12 @@
+from flask import Flask, jsonify
+from voice.voice_login import voice_login
+
+app = Flask(__name__)
+
+@app.route("/login/voice", methods=["POST"])
+def voice_auth():
+    result = voice_login()
+    return jsonify({"success": result})
+
+if __name__ == "__main__":
+    app.run(debug=True)
